@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models')
 var user = models.User
-
+// var cookieParser = require('cookie-parser')
+// var app = express()
+// app.use(cookieParser())
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
