@@ -10,15 +10,15 @@ block content
     form(method='POST' action='/reg')
       .form-group
         label(for='exampleInputEmail1') Email address
-        input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email' ,name='email')
+        input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email' ,name='email' required)
         small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
       .form-group
         label(for='exampleInputPassword1') Password
-        input#exampleInputPassword1.form-control(type='password', placeholder='Password', name='password')
+        input#exampleInputPassword1.form-control(type='password', placeholder='Password', name='password' required)
       .form-group
         label(for='exampleInputUsername1') Username
-        input#exampleInputUsername1.form-control(type='text', aria-describedby='usernameHelp', placeholder='Enter username', name='username')
+        input#exampleInputUsername1.form-control(type='text', aria-describedby='usernameHelp', placeholder='Enter username', name='username' required)
       .form-group
         label(for='exampleInputRole1') Role
-        input#exampleInputUsername1.form-control(type='text', aria-describedby='roleHelp', placeholder='Enter your role', name='role')
+        input#exampleInputUsername1.form-control(type='text', aria-describedby='roleHelp', placeholder='Enter your role', name='role' required)
       button.btn.btn-primary(type='submit') Submit

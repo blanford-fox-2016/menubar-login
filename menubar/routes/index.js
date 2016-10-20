@@ -43,10 +43,14 @@ router.post('/login', function(req, res, next) {
     user.findOne({
       where:{username: req.body.username}
     }).then(function(user) {
-      if (user.password == req.body.password) {
-        res.send(`Welcome ${user.username}`)
+      if (user != null) {
+        if (user.password == req.body.password) {
+          res.send(`Welcome ${user.username}`)
+        } else {
+          res.send('wrong password')// TODO:
+        }
       } else {
-        res.send('wrong password')// TODO:
+        res.send('username not matched')
       }
     })
   } else {
