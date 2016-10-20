@@ -10,8 +10,8 @@ block content
     form(method='POST' action='/login')
       .form-group
         label(for='exampleInputUsername1') Username
-        input#exampleInputUsername1.form-control(type='text', aria-describedby='usernameHelp', placeholder='Enter username', name='username')
+        input#exampleInputUsername1.form-control(type='text', aria-describedby='usernameHelp', placeholder='Enter username', name='username' required)
       .form-group
         label(for='exampleInputPassword1') Password
         input#exampleInputPassword1.form-control(type='password', placeholder='Password', name='password')
-      button.btn.btn-primary(type='submit') Submit
+      button.btn.btn-primary(type='submit' required) Submit
