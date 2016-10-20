@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "hacktiv8-9",
+    "password": null,
+    "database": "dbuser",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
