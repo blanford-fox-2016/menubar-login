@@ -1,14 +1,14 @@
 {
     "development": {
         "username": "postgres",
-        "password": "password",
+        "password": "Bismillah-0909",
         "database": "menubar",
         "host": "127.0.0.1",
         "dialect": "postgres"
     },
     "production": {
         "username": "postgres",
-        "password": "password",
+        "password": "Bismillah-0909",
         "database": "menubar",
         "host": "127.0.0.1",
         "dialect": "postgres"

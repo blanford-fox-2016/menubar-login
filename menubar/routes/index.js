@@ -22,7 +22,7 @@ router.post('/reg', function(req, res, next) {
           password: req.body.password,
           role: req.body.role
         }).then(function(user){
-          res.redirect('/')
+          res.redirect('/login', {success: 'Registration success, now you can login.'})
         })
       }
     })
