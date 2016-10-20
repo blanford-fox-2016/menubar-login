@@ -10,6 +10,9 @@ block content
     - if(wrong)
       .alert.alert-danger(role='alert')
         a.alert-link(href='#')= wrong
+    -if(success)
+      .alert.alert-success(role='alert')
+        a.alert-link(href="login")= success
     form(method='POST' action='/login')
       .form-group
         label(for='exampleInputUsername1') Username
