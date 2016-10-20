@@ -7,6 +7,9 @@ block content
       h3
         | Ini form login
       p Challenge week-4 Hactiv8 Bootcamp
+    - if(wrong)
+      .alert.alert-danger(role='alert')
+        a.alert-link(href='#')= wrong
     form(method='POST' action='/login')
       .form-group
         label(for='exampleInputUsername1') Username
@@ -15,3 +18,4 @@ block content
         label(for='exampleInputPassword1') Password
         input#exampleInputPassword1.form-control(type='password', placeholder='Password', name='password')
       button.btn.btn-primary(type='submit' required) Submit
+      

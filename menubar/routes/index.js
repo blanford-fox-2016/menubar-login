@@ -44,7 +44,8 @@ router.post('/login', function(req, res, next) {
       if (user.password == req.body.password) {
         res.send(`Welcome ${user.username}`)
       } else {
-        res.send('wrong password')// TODO:
+        res.render('login', {wrong: 'Wrong username or password!'})
+        // res.send('wrong password')
       }
     })
   } else {
