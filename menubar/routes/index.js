@@ -6,43 +6,41 @@ var user = models.User
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if (req.session.user_id) {
-    res.render('user', {user: req.session.user_name})
+    res.redirect('user')
   } else {
     res.render('index');
   }
 });
 
 router.post('/reg', function(req, res, next) {
-  if (req.session.user_id) {
-    res.render('user', {user: req.session.user_name})
+
+  if (req.body.username && req.body.email && req.body.password && req.body.role) {
+    user.findAll({
+      where:{email:req.body.email}
+    }).then(function(log){
+      if (log.length != 0) {
+        res.render('index', { err: 'Email already taken!'});
+      }else{
+        user.create({
+          username: req.body.username,
+          email: req.body.email,
+          password: req.body.password,
+          role: req.body.role
+        }).then(function(user){
+          // res.redirect('/')
+          res.render('login', {success: 'Your registration was success! You can login now'})
+        })
+      }
+    })
   } else {
-    if (req.body.username && req.body.email && req.body.password && req.body.role) {
-      user.findAll({
-        where:{email:req.body.email}
-      }).then(function(log){
-        if (log.length != 0) {
-          res.send('email sudah terpakai')// TODO:
-        }else{
-          user.create({
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password,
-            role: req.body.role
-          }).then(function(user){
-            res.redirect('/')
-          })
-        }
-      })
-    } else {
-      res.send('Harus diisi semua')// TODO:
-      // kasih peringatan harus diisi
-    }
+    res.render('index', { err: 'All fields required!'});
+    // kasih peringatan harus diisi
   }
 })
 
 router.get('/login', function(req, res, next) {
   if (req.session.user_id) {
-    res.render('user', {user: req.session.user_name})
+    res.redirect('/user')
   } else {
     res.render('login')
   }
@@ -70,7 +68,7 @@ router.post('/login', function(req, res, next) {
         }
       })
     } else {
-      res.send('email field must be filled')// TODO:
+      res.send('email field must be filled')
     }
   }
 })
@@ -79,12 +77,12 @@ router.get('/user', function(req, res, next) {
   if (req.session.user_id) {
     res.render('user', {user: req.session.user_name, users: req.session})
   } else {
-    res.render('index')
+    res.redirect('/login')
   }
 })
 
 router.get('/logout', function(req, res, next) {
   req.session.destroy()
-  res.render('index')
+  res.redirect('/')
 })
 module.exports = router;

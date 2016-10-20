@@ -7,6 +7,9 @@ block content
       h3
         | Ini form Register
       p Challenge week-4 Hactiv8 Bootcamp
+    - if(err)
+      .alert.alert-danger(role='alert')
+        a.alert-link(href='#')= err
     form(method='POST' action='/reg')
       .form-group
         label(for='exampleInputEmail1') Email address
