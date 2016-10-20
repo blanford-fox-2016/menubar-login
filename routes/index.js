@@ -2,14 +2,12 @@ var express = require('express');
 var router = express.Router();
 let models = require('../models')
 let Users = models.Users
-let app = express()
 
-app.use(express.cookieParser());
-app.use(express.session({secret: '1234567890QWERTY'}));
+// app.use(express.session({secret: '1234567890QWERTY'}));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Express' , session_user_id: req.session.user_id, session_user_name: req.session.user_name});
 });
 
 router.post('/', (req, res) => {
@@ -19,17 +17,26 @@ router.post('/', (req, res) => {
 
   Users.findOne({
     where: {
-      username: username
+      username: username,
+      password: password
     }
   }).then((data) => {
-    console.log(data.username);
+    console.log(req.session);
+    console.log(data.role);
+    req.session.user_id = data.id
+    req.session.user_name = data.username
+    req.session.role = data.role
+    res.redirect('/users')
+
+  }).catch((err) => {
+    if(err) console.log(err);
+    res.render('index', {
+      title: 'Express',
+      err: 'Input wrong'})
   })
-  res.render('index')
+
 })
 
-router.get('/login', function(req, res, next) {
-  res.send("a")
-  // res.render('index', { title: 'Express' });
-});
+
 
 module.exports = router;

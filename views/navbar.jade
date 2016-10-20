@@ -9,13 +9,24 @@ block navbar
         ul.nav.navbar-nav
           li.active
             a(href='#') Home
+          if session_user_role === "admin"
+            li.active
+              a(href='#') Admin
+          if session_user_role === "supervisor"
+            li.active
+              a(href='#') Supervisor
+          if session_user_role === "customer"
+            li.active
+              a(href='#') Customer
         ul.nav.navbar-nav.navbar-right
             li
-              a(href='#login')
-                span.glyphicon.glyphicon-user
-                |  Login
+              if typeof session_user_id === "undefined"
+                a(href='#login')
+                  span.glyphicon.glyphicon-user
+                  |  Login
             li
-              a(href='/logout')
-                span.glyphicon.glyphicon-log-in
-                |  Logout
+              if typeof session_user_id != "undefined"
+                a(href='/users/logout')
+                  span.glyphicon.glyphicon-log-in
+                  |  Logout
     block content
