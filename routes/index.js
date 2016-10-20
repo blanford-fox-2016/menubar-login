@@ -5,7 +5,7 @@ var menu = model.Menu
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express', err: "" });
+  res.render('index', { title: 'Session', err: "" });
 });
 
 router.get('/register', function(req, res, next) {
