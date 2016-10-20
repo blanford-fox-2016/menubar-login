@@ -1,0 +1,21 @@
+extends layout
+
+block navbar
+  .container
+    nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          a.navbar-brand(href='#') #{title}
+        ul.nav.navbar-nav
+          li.active
+            a(href='#') Home
+        ul.nav.navbar-nav.navbar-right
+            li
+              a(href='#login')
+                span.glyphicon.glyphicon-user
+                |  Login
+            li
+              a(href='/logout')
+                span.glyphicon.glyphicon-log-in
+                |  Logout
+    block content
