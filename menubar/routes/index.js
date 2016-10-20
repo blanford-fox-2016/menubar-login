@@ -2,9 +2,7 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models')
 var user = models.User
-// var cookieParser = require('cookie-parser')
-// var app = express()
-// app.use(cookieParser())
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -45,8 +43,10 @@ router.post('/login', function(req, res, next) {
     }).then(function(user) {
       if (user != null) {
         if (user.password == req.body.password) {
-          // res.send(`Welcome ${user.username}`)
-          res.render('user', {user})
+          req.session.user_id = user.id
+          req.session.user_name = user.username
+          req.session.role = user.role
+          res.render('user', {user: req.session.user_name})
         } else {
           res.render('login', {wrong: 'Wrong username or password!'})
         }
