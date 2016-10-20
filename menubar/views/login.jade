@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  
+  .container
+    .page-header
+      h3
+        | Ini form login
+      p Challenge week-4 Hactiv8 Bootcamp
+    form(method='POST' action='/login')
+      .form-group
+        label(for='exampleInputUsername1') Username
+        input#exampleInputUsername1.form-control(type='text', aria-describedby='usernameHelp', placeholder='Enter username', name='username')
+      .form-group
+        label(for='exampleInputPassword1') Password
+        input#exampleInputPassword1.form-control(type='password', placeholder='Password', name='password')
+      button.btn.btn-primary(type='submit') Submit
