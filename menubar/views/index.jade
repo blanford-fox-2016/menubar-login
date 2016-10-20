@@ -22,23 +22,3 @@ block content
         label(for='exampleInputRole1') Role
         input#exampleInputUsername1.form-control(type='text', aria-describedby='roleHelp', placeholder='Enter your role', name='role')
       button.btn.btn-primary(type='submit') Submit
-    
-    .modal.fade(tabindex='-1', role='dialog')
-      .modal-dialog(role='document')
-        .modal-content
-          .modal-header
-            button.close(type='button', data-dismiss='modal', aria-label='Close')
-              span(aria-hidden='true') ×
-            h4.modal-title Login
-          .modal-body
-            form(method='POST' action='/login')
-              .form-group
-                label(for='exampleInputUsername1') Username
-                input#exampleInputUsername1.form-control(type='text', aria-describedby='usernameHelp', placeholder='Enter username', name='username')
-              .form-group
-                label(for='exampleInputPassword1') Password
-                input#exampleInputPassword1.form-control(type='password', placeholder='Password', name='password')
-              button.btn.btn-primary(type='submit') Submit
-          .modal-footer
-            button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button') Save changes
